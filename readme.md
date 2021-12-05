@@ -1,4 +1,4 @@
-##用例
+## 用例
 ````
 <?php
 
@@ -22,9 +22,9 @@ $bannerconfig = ["channel"=>"mv"];
 Ev::VodBanner($bannerconfig);//获取不同频道的banner
 
 ````
-##配置详解
+## 配置详解
 
-####intconfig(初始化配置)
+#### intconfig(初始化配置)
 
 参数名 | 注释 | 例子
 ---|---|---
@@ -32,7 +32,7 @@ type | 采集器分类 | qihu/weitang
 domin | 目标domin,可不填 | https://api.web.360kan.com/v1
 typeconfig | 分类配置 | 可不填
 
-####listconfig(列表配置)
+#### listconfig(列表配置)
 参数名 | 注释 | 例子
 ---|---|---
 channel | 频道 | mv:电影 tv:电视 va:综艺 ct:动漫
@@ -42,7 +42,7 @@ year | 年份 | 可不填
 size | 每页大小(只在360kan中生效) | 可不填
 pageno | 页码 | 1
 
-#####kind(详解)
+##### kind(详解)
 频道|分类 | 中文解释
 ---|---|---
 mv|all|全部
@@ -144,7 +144,7 @@ ct|tv|TV版
 ct|newanime|新番动画
 ct|finishanime|完结动画
 
-#####area(详解)
+##### area(详解)
 地区 | 中文解释
 ---|---
 all|全部
@@ -161,17 +161,17 @@ india|印度
 america|美国
 singapore|新加披
 other|其他
-####playconfig(播放页配置)
+#### playconfig(播放页配置)
 参数 | 注释|例子
 ---|---|---
 url|列表返回结果中的url|va/xxxxxx.html
 
-####searchconfig(搜索配置)
+#### searchconfig(搜索配置)
 参数 | 注释|例子
 ---|---|---
 key|搜索关键字|我的姐姐
 
-####bannerconfig(轮播配置)
+#### bannerconfig(轮播配置)
 参数 | 注释|例子
 ---|---|---
 channel|频道|mv tv va ct
