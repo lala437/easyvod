@@ -209,7 +209,7 @@ class QhCollect implements Collect
 
     public function VodPlay(array $params = [])
     {
-        list($cat, $id) = explode("/", $params["play"]);
+        list($cat, $id) = explode("/", $params["url"]);
         $url = $this->domin . "/detail?" . http_build_query(["cat" => $cat, "id" => $id]);
         $result = FunctionUnit::http_request($url, "get");
         $data = json_decode($result, 1);

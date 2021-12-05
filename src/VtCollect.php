@@ -205,7 +205,7 @@ class VtCollect implements Collect
 
     public function VodPlay(array $params = [])
     {
-        $url = $this->domin . $params["play"];
+        $url = $this->domin . $params["url"];
         $qlhtml = $this->ql->get($url);
         $inforules = [
             "range" => null,
