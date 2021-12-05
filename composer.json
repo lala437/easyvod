@@ -12,8 +12,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.0.0",
-        "jaeger/querylist": "dev-master",
-      "ext-http": "*"
+        "jaeger/querylist": "dev-master"
     },
     "autoload": {
         "psr-4": {
