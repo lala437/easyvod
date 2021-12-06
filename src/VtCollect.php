@@ -203,6 +203,33 @@ class VtCollect implements Collect
         return $vodlists;
     }
 
+    public function VodMultiList(array $paramslist = [])
+    {
+        $vodlists = [];
+        $url = [];
+        foreach ($paramslist as $params) {
+            $query = ["pageno" => $params["pageno"] ?? 1, "channel" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "kind" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" => $params["year"] ?? "all", "pay" => "all", "callback" => "vtlist"];
+            $url[$params["channel"]] = $this->domin . "/data/v/get_program_list.php" . "?" . http_build_query($query);
+        }
+        $results = FunctionUnit::http_multi($url);
+        foreach ($results as $key => $result) {
+            $datas = FunctionUnit::jsonp_decode($result, 1);
+            if ($datas && isset($datas["list"])) {
+                $temp = [];
+                foreach ($datas["list"] as $data) {
+                    $vodlist["url"] = $data["url"] ?? "";
+                    $vodlist["img"] = $data["img"] ?? "";
+                    $vodlist["title"] = $data["title"] ?? "ew";
+                    $vodlist["episode"] = $data["episode"] ?? "";
+                    $vodlist["pay"] = $data["pay"] ?? 0;
+                    $temp[] = $vodlist;
+                }
+                $vodlists[$key] = $temp;
+            }
+        }
+        return $vodlists;
+    }
+
     public function VodPlay(array $params = [])
     {
         $url = $this->domin . $params["url"];

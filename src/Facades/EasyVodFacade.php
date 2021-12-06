@@ -34,6 +34,16 @@ class EasyVodFacade
     /**
      * @param array $params
      * @return mixed
+     * 同时获取多个不同频道的视频列表
+     */
+    public static function VodMultiList(array $params = [])
+    {
+        return static::$ev->VodMultiList($params);
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
      * 获取播放页或者详情页内容
      */
     public static function VodPlay(array $params = [])

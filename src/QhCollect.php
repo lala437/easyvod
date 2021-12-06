@@ -207,6 +207,35 @@ class QhCollect implements Collect
         return $vodlists;
     }
 
+    public function VodMultiList(array $paramslist = [])
+    {
+        $vodlists = [];
+        $url = [];
+        foreach ($paramslist as $params) {
+            $query = ["pageno" => $params["pageno"] ?? 1, "catid" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "rank" => "rankhot", "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "cat" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" => $params["year"] ?? "", "size" => $params["size"] ?? 35, "act" => $params["act"] ?? ""];
+            $url[$params["channel"]] = $this->domin . "/filter/list?" . http_build_query($query);
+        }
+        $results = FunctionUnit::http_multi($url);
+        foreach ($results as $key => $result) {
+            $datas = json_decode($result, 1);
+            if ($datas && $datas["errno"] == 0) {
+                $temp = [];
+                foreach ($datas["data"]["movies"] as $data) {
+                    $vodlist["url"] = $query["catid"] . "/" . $data["id"];
+                    $vodlist["img"] = $data["cdncover"] ?? "";
+                    $vodlist["title"] = $data["title"] ?? "easyvod";
+                    $vodlist["episode"] = $data["upinfo"] ?? "";
+                    $vodlist["year"] = $data["year"] ?? "";
+                    $vodlist["score"] = $data["score"] ?? rand(1, 9);
+                    $vodlist["pay"] = $data["payment"] ?? 0;
+                    $temp[] = $vodlist;
+                }
+                $vodlists[$key] = $temp;
+            }
+        }
+        return $vodlists;
+    }
+
     public function VodPlay(array $params = [])
     {
         list($cat, $id) = explode("/", $params["url"]);
