@@ -58,6 +58,25 @@ class VtCollect implements Collect
                         "india" => 11,
                         "america" => 3,
                         "other" => "other"
+                    ],
+                    "year"=>[
+                        "all"=>"all",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
+                        "other" => "other"
                     ]
                 ],
                 "tv" => [
@@ -95,6 +114,25 @@ class VtCollect implements Collect
                         "america" => 7,
                         "singapore" => 2,
                         "other" => "other"
+                    ],
+                    "year"=>[
+                        "all"=>"all",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
+                        "other" => "other"
                     ]
                 ],
                 "va" => [
@@ -129,6 +167,25 @@ class VtCollect implements Collect
                         "eu" => 5,
                         "japan" => 4,
                         "korea" => 3,
+                        "other" => "other"
+                    ],
+                    "year"=>[
+                        "all"=>"all",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
                         "other" => "other"
                     ]
                 ],
@@ -176,6 +233,25 @@ class VtCollect implements Collect
                         "america" => 2,
                         "japan" => 3,
                         "other" => "other",
+                    ],
+                    "year"=>[
+                        "all"=>"all",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
+                        "other" => "other"
                     ]
                 ],
             ]
@@ -186,7 +262,7 @@ class VtCollect implements Collect
     public function VodList(array $params = [])
     {
         $vodlists = [];
-        $query = ["pageno" => $params["pageno"] ?? 1, "channel" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "kind" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" => $params["year"] ?? "all", "pay" => "all", "callback" => "vtlist"];
+        $query = ["pageno" => $params["pageno"] ?? 1, "channel" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "kind" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "year", $params["year"]), "pay" => "all", "callback" => "vtlist"];
         $url = $this->domin . "/data/v/get_program_list.php" . "?" . http_build_query($query);
         $result = FunctionUnit::http_request($url);
         $datas = FunctionUnit::jsonp_decode($result, 1);

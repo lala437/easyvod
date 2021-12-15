@@ -56,6 +56,25 @@ class QhCollect implements Collect
                         "america" => "美国",
                         "other" => "其他"
                     ],
+                    "year"=>[
+                        "all"=>"",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
+                        "other" => "其他"
+                    ]
                 ],
                 "tv" => [
                     "kind" => [
@@ -96,6 +115,25 @@ class QhCollect implements Collect
                         "america" => "美国",
                         "singapore" => "新加披",
                         "other" => "其他"
+                    ],
+                    "year"=>[
+                        "all"=>"",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
+                        "other" => "其他"
                     ]
                 ],
                 "va" => [
@@ -133,6 +171,25 @@ class QhCollect implements Collect
                         "taiwan" => "台湾",
                         "eu" => "欧美",
                         "japan" => "日本",
+                    ],
+                    "year"=>[
+                        "all"=>"",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
+                        "other" => "其他"
                     ]
                 ],
                 "ct" => [
@@ -178,6 +235,25 @@ class QhCollect implements Collect
                         "china" => "大陆",
                         "america" => "美国",
                         "japan" => "日本",
+                    ],
+                    "year"=>[
+                        "all"=>"",
+                        "2007"=>2007,
+                        "2008"=>2008,
+                        "2009"=>2009,
+                        "2010"=>2010,
+                        "2011"=>2011,
+                        "2012"=>2012,
+                        "2013"=>2013,
+                        "2014"=>2014,
+                        "2015"=>2015,
+                        "2016"=>2016,
+                        "2017"=>2017,
+                        "2018"=>2018,
+                        "2019"=>2019,
+                        "2020"=>2020,
+                        "2021"=>2021,
+                        "other" => "其他"
                     ]
                 ],
 
@@ -188,7 +264,7 @@ class QhCollect implements Collect
     public function VodList(array $params = [])
     {
         $vodlists = [];
-        $query = ["pageno" => $params["pageno"] ?? 1, "catid" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "rank" => "rankhot", "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "cat" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" => $params["year"] ?? "", "size" => $params["size"] ?? 35, "act" => $params["act"] ?? ""];
+        $query = ["pageno" => $params["pageno"] ?? 1, "catid" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "rank" => "rankhot", "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "cat" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" =>  FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "year", $params["year"]), "size" => $params["size"] ?? 35, "act" => $params["act"] ?? ""];
         $url = $this->domin . "/filter/list?" . http_build_query($query);
         $result = FunctionUnit::http_request($url, "get");
         $datas = json_decode($result, 1);
