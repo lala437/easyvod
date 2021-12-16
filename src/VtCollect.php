@@ -268,7 +268,7 @@ class VtCollect implements Collect
         $datas = FunctionUnit::jsonp_decode($result, 1);
         if ($datas && isset($datas["list"])) {
             foreach ($datas["list"] as $data) {
-                $vodlist["url"] = $data["url"] ?? "";
+                $vodlist["url"] = str_replace(".html","",$data["url"] ?? "");
                 $vodlist["img"] = $data["img"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["episode"] ?? "";
@@ -295,7 +295,7 @@ class VtCollect implements Collect
             if ($datas && isset($datas["list"])) {
                 $temp = [];
                 foreach ($datas["list"] as $data) {
-                    $vodlist["url"] = $data["url"] ?? "";
+                    $vodlist["url"] = str_replace(".html","",$data["url"] ?? "");
                     $vodlist["img"] = $data["img"] ?? "";
                     $vodlist["title"] = $data["title"] ?? "ew";
                     $vodlist["episode"] = $data["episode"] ?? "";
@@ -398,7 +398,7 @@ class VtCollect implements Collect
         $datas = FunctionUnit::jsonp_decode($result, 1);
         if (!FunctionUnit::blank($datas)) {
             foreach ($datas as $data) {
-                $vodlist["url"] = $data["programUrl"] ?? "";
+                $vodlist["url"] = str_replace(".html","",$data["programUrl"] ?? "");
                 $vodlist["img"] = $data["poster"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "ew";
                 $vodlist["episode"] = $data["max_episode"] ?? "";
