@@ -274,8 +274,8 @@ class QhCollect implements Collect
                 $vodlist["img"] = $data["cdncover"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["upinfo"] ?? "";
-                $vodlist["year"] = $data["year"] ?? "";
-                $vodlist["score"] = $data["score"] ?? rand(1, 9);
+                $vodlist["year"] = $data["year"] ?? "2021";
+                $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
                 $vodlist["pay"] = $data["payment"] ?? 0;
                 $vodlists[] = $vodlist;
             }
