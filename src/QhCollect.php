@@ -270,7 +270,7 @@ class QhCollect implements Collect
         $datas = json_decode($result, 1);
         if ($datas && $datas["errno"] == 0) {
             foreach ($datas["data"]["movies"] as $data) {
-                $vodlist["url"] = $query["catid"] . "/" . $data["id"];
+                $vodlist["url"] = FunctionUnit::UrlParse($query["catid"] . "/" . $data["id"]);
                 $vodlist["img"] = $data["cdncover"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["upinfo"] ?? "";
@@ -297,7 +297,7 @@ class QhCollect implements Collect
             if ($datas && $datas["errno"] == 0) {
                 $temp = [];
                 foreach ($datas["data"]["movies"] as $data) {
-                    $vodlist["url"] = $query["catid"] . "/" . $data["id"];
+                    $vodlist["url"] = FunctionUnit::UrlParse($query["catid"] . "/" . $data["id"]);
                     $vodlist["img"] = $data["cdncover"] ?? "";
                     $vodlist["title"] = $data["title"] ?? "easyvod";
                     $vodlist["episode"] = $data["upinfo"] ?? "";
@@ -314,7 +314,7 @@ class QhCollect implements Collect
 
     public function VodPlay(array $params = [])
     {
-        list($cat, $id) = explode("/", $params["url"]);
+        list($cat, $id) = explode("/", FunctionUnit::UrlParse($params["url"],false));
         $url = $this->domin . "/detail?" . http_build_query(["cat" => $cat, "id" => $id]);
         $result = FunctionUnit::http_request($url, "get");
         $data = json_decode($result, 1);
@@ -364,7 +364,7 @@ class QhCollect implements Collect
         if ($datas && $datas["errno"] == 0) {
             foreach ($datas["data"]["lists"] as $data) {
                 $bannerlist = [];
-                $bannerlist["url"] = $data["cat"] . "/" . $data["ent_id"];
+                $bannerlist["url"] = FunctionUnit::UrlParse($data["cat"] . "/" . $data["ent_id"]);
                 $bannerlist["title"] = $data["title"] ?? "easyvod";
                 $bannerlist["img"] = $data["pic_lists"][0]["url"] ?? "";
                 $bannerlists[] = $bannerlist;
@@ -382,7 +382,7 @@ class QhCollect implements Collect
         $datas = json_decode($result, 1);
         if ($datas && $datas["code"] == 0) {
             foreach ($datas["data"]["longData"]["rows"] as $data) {
-                $vodlist["url"] = $data["cat_id"] . "/" . $data["en_id"];
+                $vodlist["url"] = FunctionUnit::UrlParse($data["cat_id"] . "/" . $data["en_id"]);
                 $vodlist["img"] = $data["cover"] ?? "";
                 $vodlist["title"] = $data["titleTxt"] ?? "easyvod";
                 $vodlist["episode"] = $data["upinfo"] ?? 0;

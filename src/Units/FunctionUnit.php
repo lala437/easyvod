@@ -142,4 +142,16 @@ class FunctionUnit
             return "";
         }
     }
+
+    public static function UrlParse($url,$encode=true){
+       if (!empty($url)){
+           if ($encode){
+               $url = str_replace("/","evs",str_replace(".html","",$url));
+           }else{
+               $url = str_replace("evs","/",$url);
+           }
+           return $url;
+       }
+       return "";
+    }
 }

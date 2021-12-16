@@ -268,7 +268,7 @@ class VtCollect implements Collect
         $datas = FunctionUnit::jsonp_decode($result, 1);
         if ($datas && isset($datas["list"])) {
             foreach ($datas["list"] as $data) {
-                $vodlist["url"] = str_replace(".html","",$data["url"] ?? "");
+                $vodlist["url"] = FunctionUnit::UrlParse($data["url"] ?? "");
                 $vodlist["img"] = $data["img"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["episode"] ?? "";
@@ -295,7 +295,7 @@ class VtCollect implements Collect
             if ($datas && isset($datas["list"])) {
                 $temp = [];
                 foreach ($datas["list"] as $data) {
-                    $vodlist["url"] = str_replace(".html","",$data["url"] ?? "");
+                    $vodlist["url"] = FunctionUnit::UrlParse($data["url"] ?? "");
                     $vodlist["img"] = $data["img"] ?? "";
                     $vodlist["title"] = $data["title"] ?? "ew";
                     $vodlist["episode"] = $data["episode"] ?? "";
@@ -312,7 +312,7 @@ class VtCollect implements Collect
 
     public function VodPlay(array $params = [])
     {
-        $url = $this->domin . $params["url"].".html";
+        $url = $this->domin . FunctionUnit::UrlParse($params["url"],false).".html";
         $qlhtml = $this->ql->get($url);
         $inforules = [
             "range" => null,
@@ -380,7 +380,7 @@ class VtCollect implements Collect
         if (isset($datas["modules"])) {
             foreach ($datas["modules"][0]["blocks"][0]["banner_item"] as $data) {
                 $bannerlist = [];
-                $bannerlist["url"] = str_replace(".html","",$data["url"] ?? "");
+                $bannerlist["url"] = FunctionUnit::UrlParse($data["url"] ?? "");
                 $bannerlist["title"] = $data["title"] ?? "easyvod";
                 $bannerlist["img"] = $data["img"] ?? "";
                 $bannerlists[] = $bannerlist;
@@ -398,7 +398,7 @@ class VtCollect implements Collect
         $datas = FunctionUnit::jsonp_decode($result, 1);
         if (!FunctionUnit::blank($datas)) {
             foreach ($datas as $data) {
-                $vodlist["url"] = str_replace(".html","",$data["programUrl"] ?? "");
+                $vodlist["url"] = FunctionUnit::UrlParse($data["programUrl"] ?? "");
                 $vodlist["img"] = $data["poster"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "ew";
                 $vodlist["episode"] = $data["max_episode"] ?? "";
