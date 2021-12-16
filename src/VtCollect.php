@@ -327,7 +327,7 @@ class VtCollect implements Collect
             ]
         ];
         $infodata = $qlhtml->range($inforules["range"])->rules($inforules["rules"])->removeHead()->queryData();
-        if (strpos($params["play"], "movie") !== FALSE) {
+        if (strpos($params["url"], "movie") !== FALSE) {
             $playrules = [
                 "range" => ".action>.action-box",
                 "rules" => [
