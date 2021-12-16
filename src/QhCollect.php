@@ -297,7 +297,7 @@ class QhCollect implements Collect
             if ($datas && $datas["errno"] == 0) {
                 $temp = [];
                 foreach ($datas["data"]["movies"] as $data) {
-                    $vodlist["url"] = FunctionUnit::UrlParse($query["catid"] . "/" . $data["id"]);
+                    $vodlist["url"] = FunctionUnit::UrlParse(FunctionUnit::ParseConfig($this->typeconfig, $key) . "/" . $data["id"]);
                     $vodlist["img"] = $data["cdncover"] ?? "";
                     $vodlist["title"] = $data["title"] ?? "easyvod";
                     $vodlist["episode"] = $data["upinfo"] ?? "";
@@ -325,22 +325,24 @@ class QhCollect implements Collect
             $info = ["title" => $detail["title"], "img" => $detail["cdncover"], "director" => implode("/", $detail["director"]), "actor" => implode("/", $detail["actor"]), "area" => implode("/", $detail["area"]), "kind" => implode("/", $detail["moviecategory"]), "desc" => $detail["description"]];
             if (in_array($cat, [2, 4])) {
                 $playurl = [];
-                foreach ($detail["allupinfo"] as $site => $end) {
-                    $playurl[$site] = $this->domin . "/detail?" . http_build_query(["cat" => $cat, "id" => $id, "start" => 1, "end" => (int)$end - 1, "site" => $site]);
-                }
-                $playdatas = FunctionUnit::http_multi($playurl);
-                foreach ($playdatas as $type => $playdata) {
-                    $playdataarr = json_decode($playdata, 1);
-                    if ($playdataarr["errno"] != 0) {
-                        continue;
+                if (isset($detail["allupinfo"])&&!empty($detail["allupinfo"])){
+                    foreach ($detail["allupinfo"] as $site => $end) {
+                        $playurl[$site] = $this->domin . "/detail?" . http_build_query(["cat" => $cat, "id" => $id, "start" => 1, "end" => (int)$end - 1, "site" => $site]);
                     }
-                    $temp["type"] = $type;
-                    $templist = [];
-                    foreach ($playdataarr["data"]["allepidetail"][$type] as $link) {
-                        $templist[] = ["episode" => $link["playlink_num"], "address" => $link["url"]];
+                    $playdatas = FunctionUnit::http_multi($playurl);
+                    foreach ($playdatas as $type => $playdata) {
+                        $playdataarr = json_decode($playdata, 1);
+                        if ($playdataarr["errno"] != 0) {
+                            continue;
+                        }
+                        $temp["type"] = $type;
+                        $templist = [];
+                        foreach ($playdataarr["data"]["allepidetail"][$type] as $link) {
+                            $templist[] = ["episode" => $link["playlink_num"], "address" => $link["url"]];
+                        }
+                        $temp["list"] = $templist;
+                        $play[] = $temp;
                     }
-                    $temp["list"] = $templist;
-                    $play[] = $temp;
                 }
             } else {
                 foreach ($detail["playlinksdetail"] as $type => $link) {
