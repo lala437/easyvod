@@ -270,11 +270,11 @@ class VtCollect implements Collect
             foreach ($datas["list"] as $data) {
                 $vodlist["url"] = $data["url"] ?? "";
                 $vodlist["img"] = $data["img"] ?? "";
-                $vodlist["title"] = $data["title"] ?? "ew";
+                $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["episode"] ?? "";
                 $vodlist["pay"] = $data["pay"] ?? 0;
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(1, 9);
+                $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
                 $vodlists[] = $vodlist;
             }
         }
@@ -300,6 +300,8 @@ class VtCollect implements Collect
                     $vodlist["title"] = $data["title"] ?? "ew";
                     $vodlist["episode"] = $data["episode"] ?? "";
                     $vodlist["pay"] = $data["pay"] ?? 0;
+                    $vodlist["year"] = $data["year"] ?? "2021";
+                    $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
                     $temp[] = $vodlist;
                 }
                 $vodlists[$key] = $temp;
@@ -399,9 +401,9 @@ class VtCollect implements Collect
                 $vodlist["url"] = $data["programUrl"] ?? "";
                 $vodlist["img"] = $data["poster"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "ew";
-                $vodlist["episode"] = $data["max_episode"] ?? 0;
-                $vodlist["year"] = $data["pubyear"] ?? "";
-                $vodlist["score"] = $data["score"] ?? rand(1, 9);
+                $vodlist["episode"] = $data["max_episode"] ?? "";
+                $vodlist["year"] = $data["pubyear"] ?? "2021";
+                $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
                 $vodlist["pay"] = $data["pay"] ?? 0;
                 $vodlists[] = $vodlist;
             }
