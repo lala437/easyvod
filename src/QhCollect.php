@@ -347,7 +347,7 @@ class QhCollect implements Collect
             } else {
                 foreach ($detail["playlinksdetail"] as $type => $link) {
                     $temp["type"] = $type;
-                    $temp["list"] = ["episode" => $link["site"], "address" => $link["default_url"]];
+                    $temp["list"] = [["episode" => $link["site"], "address" => $link["default_url"]]];
                     $play[] = $temp;
                 }
             }

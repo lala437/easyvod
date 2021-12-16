@@ -336,12 +336,12 @@ class VtCollect implements Collect
                 ]
             ];
             $listrules = [
-                "range" => null,
+                "range" => "a",
                 "rules" => [
-                    "episode" => ["a", "id", "", function ($coment) {
+                    "episode" => ["", "id", "", function ($coment) {
                         return str_replace("program-play-btn-", "", $coment);
                     }],
-                    "address" => ["a", "href"]
+                    "address" => ["", "href"]
                 ]
             ];
         } else {
