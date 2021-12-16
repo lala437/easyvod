@@ -312,7 +312,7 @@ class VtCollect implements Collect
 
     public function VodPlay(array $params = [])
     {
-        $url = $this->domin . $params["url"];
+        $url = $this->domin . $params["url"].".html";
         $qlhtml = $this->ql->get($url);
         $inforules = [
             "range" => null,
@@ -380,7 +380,7 @@ class VtCollect implements Collect
         if (isset($datas["modules"])) {
             foreach ($datas["modules"][0]["blocks"][0]["banner_item"] as $data) {
                 $bannerlist = [];
-                $bannerlist["url"] = $data["url"] ?? "";
+                $bannerlist["url"] = str_replace(".html","",$data["url"] ?? "");
                 $bannerlist["title"] = $data["title"] ?? "easyvod";
                 $bannerlist["img"] = $data["img"] ?? "";
                 $bannerlists[] = $bannerlist;
