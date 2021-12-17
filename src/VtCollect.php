@@ -402,6 +402,8 @@ class VtCollect implements Collect
                 $vodlist["img"] = $data["poster"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "ew";
                 $vodlist["episode"] = $data["max_episode"] ?? "";
+                $vodlist["desc"] = $data["intro"]??"";
+                $vodlist["channel"] = $data["channel"]??"未知";
                 $vodlist["year"] = $data["pubyear"] ?? "2021";
                 $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
                 $vodlist["pay"] = $data["pay"] ?? 0;
