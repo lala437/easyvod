@@ -319,7 +319,7 @@ class VtCollect implements Collect
             "rules" => [
                 "title" => [".program .program-title", "text"],
                 "img" => [".program .poster>img", "src"],
-                "dector" => ["#host>.info-all", "_val"],
+                "director" => ["#host>.info-all", "_val"],
                 "actor" => ["#actor>.info-all", "_val"],
                 "area" => ["#area", "text"],
                 "kind" => ["#kind", "text"],
