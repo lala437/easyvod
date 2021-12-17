@@ -56,23 +56,23 @@ class QhCollect implements Collect
                         "america" => "美国",
                         "other" => "其他"
                     ],
-                    "year"=>[
-                        "all"=>"",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "其他"
                     ]
                 ],
@@ -116,23 +116,23 @@ class QhCollect implements Collect
                         "singapore" => "新加披",
                         "other" => "其他"
                     ],
-                    "year"=>[
-                        "all"=>"",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "其他"
                     ]
                 ],
@@ -172,23 +172,23 @@ class QhCollect implements Collect
                         "eu" => "欧美",
                         "japan" => "日本",
                     ],
-                    "year"=>[
-                        "all"=>"",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "其他"
                     ]
                 ],
@@ -236,23 +236,23 @@ class QhCollect implements Collect
                         "america" => "美国",
                         "japan" => "日本",
                     ],
-                    "year"=>[
-                        "all"=>"",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "其他"
                     ]
                 ],
@@ -264,7 +264,7 @@ class QhCollect implements Collect
     public function VodList(array $params = [])
     {
         $vodlists = [];
-        $query = ["pageno" => $params["pageno"] ?? 1, "catid" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "rank" => "rankhot", "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "cat" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" =>  FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "year", $params["year"]), "size" => $params["size"] ?? 35, "act" => $params["act"] ?? ""];
+        $query = ["pageno" => $params["pageno"] ?? 1, "catid" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"]), "rank" => "rankhot", "area" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "area", $params["area"]), "cat" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "kind", $params["kind"]), "year" => FunctionUnit::ParseConfig($this->typeconfig, $params["channel"], "year", $params["year"]), "size" => $params["size"] ?? 35, "act" => $params["act"] ?? ""];
         $url = $this->domin . "/filter/list?" . http_build_query($query);
         $result = FunctionUnit::http_request($url, "get");
         $datas = json_decode($result, 1);
@@ -275,7 +275,7 @@ class QhCollect implements Collect
                 $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["upinfo"] ?? "";
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
+                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
                 $vodlist["pay"] = $data["payment"] ?? 0;
                 $vodlists[] = $vodlist;
             }
@@ -302,7 +302,7 @@ class QhCollect implements Collect
                     $vodlist["title"] = $data["title"] ?? "easyvod";
                     $vodlist["episode"] = $data["upinfo"] ?? "";
                     $vodlist["year"] = $data["year"] ?? "2021";
-                    $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
+                    $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
                     $vodlist["pay"] = $data["payment"] ?? 0;
                     $temp[] = $vodlist;
                 }
@@ -314,7 +314,7 @@ class QhCollect implements Collect
 
     public function VodPlay(array $params = [])
     {
-        list($cat, $id) = explode("/", FunctionUnit::UrlParse($params["url"],false));
+        list($cat, $id) = explode("/", FunctionUnit::UrlParse($params["url"], false));
         $url = $this->domin . "/detail?" . http_build_query(["cat" => $cat, "id" => $id]);
         $result = FunctionUnit::http_request($url, "get");
         $data = json_decode($result, 1);
@@ -323,9 +323,9 @@ class QhCollect implements Collect
         if ($data && $data["errno"] == 0) {
             $detail = $data["data"];
             $info = ["title" => $detail["title"], "img" => $detail["cdncover"], "director" => implode("/", $detail["director"]), "actor" => implode("/", $detail["actor"]), "area" => implode("/", $detail["area"]), "kind" => implode("/", $detail["moviecategory"]), "desc" => $detail["description"]];
-            if (in_array($cat, [2, 4])) {
+            if (in_array($cat, [2,3,4])) {
                 $playurl = [];
-                if (isset($detail["allupinfo"])&&!empty($detail["allupinfo"])){
+                if (isset($detail["allupinfo"]) && !empty($detail["allupinfo"])) {
                     foreach ($detail["allupinfo"] as $site => $end) {
                         $playurl[$site] = $this->domin . "/detail?" . http_build_query(["cat" => $cat, "id" => $id, "start" => 1, "end" => (int)$end - 1, "site" => $site]);
                     }
@@ -337,8 +337,14 @@ class QhCollect implements Collect
                         }
                         $temp["type"] = $type;
                         $templist = [];
-                        foreach ($playdataarr["data"]["allepidetail"][$type] as $link) {
-                            $templist[] = ["episode" => $link["playlink_num"], "address" => $link["url"]];
+                        if ($cat==3){
+                            foreach ($playlistdata = $playdataarr["data"]["defaultepisode"] as $link) {
+                                $templist[] = ["episode" => $link["pubdate"], "address" => $link["url"]];
+                            }
+                        }else{
+                            foreach ($playdataarr["data"]["allepidetail"][$type] as $link) {
+                                $templist[] = ["episode" => $link["playlink_num"], "address" => $link["url"]];
+                            }
                         }
                         $temp["list"] = $templist;
                         $play[] = $temp;
@@ -389,7 +395,7 @@ class QhCollect implements Collect
                 $vodlist["title"] = $data["titleTxt"] ?? "easyvod";
                 $vodlist["episode"] = $data["upinfo"] ?? 0;
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
+                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
                 $vodlist["pay"] = $data["vip"] ?? 0;
                 $vodlists[] = $vodlist;
             }
