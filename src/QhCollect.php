@@ -73,7 +73,7 @@ class QhCollect implements Collect
                         "2019" => 2019,
                         "2020" => 2020,
                         "2021" => 2021,
-                        "other" => "其他"
+                        "other" => "lt_year"
                     ]
                 ],
                 "tv" => [
@@ -133,7 +133,7 @@ class QhCollect implements Collect
                         "2019" => 2019,
                         "2020" => 2020,
                         "2021" => 2021,
-                        "other" => "其他"
+                        "other" => "lt_year"
                     ]
                 ],
                 "va" => [
@@ -189,7 +189,7 @@ class QhCollect implements Collect
                         "2019" => 2019,
                         "2020" => 2020,
                         "2021" => 2021,
-                        "other" => "其他"
+                        "other" => "lt_year"
                     ]
                 ],
                 "ct" => [
@@ -253,7 +253,7 @@ class QhCollect implements Collect
                         "2019" => 2019,
                         "2020" => 2020,
                         "2021" => 2021,
-                        "other" => "其他"
+                        "other" => "lt_year"
                     ]
                 ],
 
@@ -268,7 +268,7 @@ class QhCollect implements Collect
         $url = $this->domin . "/filter/list?" . http_build_query($query);
         $result = FunctionUnit::http_request($url, "get");
         $datas = json_decode($result, 1);
-        if ($datas && $datas["errno"] == 0) {
+        if ($datas && $datas["errno"] == 0&&!empty($datas["data"])) {
             foreach ($datas["data"]["movies"] as $data) {
                 $vodlist["url"] = FunctionUnit::UrlParse($query["catid"] . "/" . $data["id"]);
                 $vodlist["img"] = $data["cdncover"] ?? "";
@@ -294,7 +294,7 @@ class QhCollect implements Collect
         $results = FunctionUnit::http_multi($url);
         foreach ($results as $key => $result) {
             $datas = json_decode($result, 1);
-            if ($datas && $datas["errno"] == 0) {
+            if ($datas && $datas["errno"] == 0&&!empty($datas["data"])) {
                 $temp = [];
                 foreach ($datas["data"]["movies"] as $data) {
                     $vodlist["url"] = FunctionUnit::UrlParse(FunctionUnit::ParseConfig($this->typeconfig, $key) . "/" . $data["id"]);
