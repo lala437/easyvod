@@ -44,6 +44,28 @@ class EasyVodFacade
     /**
      * @param array $params
      * @return mixed
+     * 获取视频列表
+     */
+    public static function VodRank(array $params = [])
+    {
+        return static::$ev->VodRank($params);
+    }
+
+    /**
+     * @param array $params
+     * @return mixed
+     * 获取视频列表
+     */
+    public static function VodMultiRank(array $params = [])
+    {
+        return static::$ev->VodMultiRank($params);
+    }
+
+
+
+    /**
+     * @param array $params
+     * @return mixed
      * 获取播放页或者详情页内容
      */
     public static function VodPlay(array $params = [])

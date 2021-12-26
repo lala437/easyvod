@@ -59,23 +59,23 @@ class VtCollect implements Collect
                         "america" => 3,
                         "other" => "other"
                     ],
-                    "year"=>[
-                        "all"=>"all",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "all",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "other"
                     ]
                 ],
@@ -115,23 +115,23 @@ class VtCollect implements Collect
                         "singapore" => 2,
                         "other" => "other"
                     ],
-                    "year"=>[
-                        "all"=>"all",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "all",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "other"
                     ]
                 ],
@@ -169,23 +169,23 @@ class VtCollect implements Collect
                         "korea" => 3,
                         "other" => "other"
                     ],
-                    "year"=>[
-                        "all"=>"all",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "all",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "other"
                     ]
                 ],
@@ -234,23 +234,23 @@ class VtCollect implements Collect
                         "japan" => 3,
                         "other" => "other",
                     ],
-                    "year"=>[
-                        "all"=>"all",
-                        "2007"=>2007,
-                        "2008"=>2008,
-                        "2009"=>2009,
-                        "2010"=>2010,
-                        "2011"=>2011,
-                        "2012"=>2012,
-                        "2013"=>2013,
-                        "2014"=>2014,
-                        "2015"=>2015,
-                        "2016"=>2016,
-                        "2017"=>2017,
-                        "2018"=>2018,
-                        "2019"=>2019,
-                        "2020"=>2020,
-                        "2021"=>2021,
+                    "year" => [
+                        "all" => "all",
+                        "2007" => 2007,
+                        "2008" => 2008,
+                        "2009" => 2009,
+                        "2010" => 2010,
+                        "2011" => 2011,
+                        "2012" => 2012,
+                        "2013" => 2013,
+                        "2014" => 2014,
+                        "2015" => 2015,
+                        "2016" => 2016,
+                        "2017" => 2017,
+                        "2018" => 2018,
+                        "2019" => 2019,
+                        "2020" => 2020,
+                        "2021" => 2021,
                         "other" => "other"
                     ]
                 ],
@@ -274,7 +274,7 @@ class VtCollect implements Collect
                 $vodlist["episode"] = $data["episode"] ?? "";
                 $vodlist["pay"] = $data["pay"] ?? 0;
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
+                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
                 $vodlists[] = $vodlist;
             }
         }
@@ -301,7 +301,7 @@ class VtCollect implements Collect
                     $vodlist["episode"] = $data["episode"] ?? "";
                     $vodlist["pay"] = $data["pay"] ?? 0;
                     $vodlist["year"] = $data["year"] ?? "2021";
-                    $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
+                    $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
                     $temp[] = $vodlist;
                 }
                 $vodlists[$key] = $temp;
@@ -310,9 +310,64 @@ class VtCollect implements Collect
         return $vodlists;
     }
 
+    public function VodRank(array $params = [])
+    {
+        $ranklists = [];
+        $channel = $params["channel"] ?? "mv";
+        $blockid = ["mv" => "movie", "tv" => "tv", "va" => "show", "ct" => "comic"];
+        $url = $this->domin . "/data/v/get_index_data.php?callback=rank&ch=" . (isset($blockid[$channel]) ? $blockid[$channel] : "movie");
+        $result = FunctionUnit::http_request($url, "get");
+        $datas = FunctionUnit::jsonp_decode($result, 1);
+        if (isset($datas["modules"])) {
+            foreach ($datas["modules"][1]["blocks"][0]["block_item"] as $data) {
+                $ranklist = [];
+                $ranklist["url"] = FunctionUnit::UrlParse($data["url"] ?? "");
+                $ranklist["title"] = $data["title"] ?? "easyvod";
+                $ranklist["img"] = $data["img"] ?? "";
+                $ranklist["episode"] = $data["episode"] ?? "";
+                $ranklist["year"] = $data["year"] ?? "2021";
+                $ranklist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $ranklist["pay"] = $data["pay"] ?? 0;
+                $ranklists[] = $ranklist;
+            }
+        }
+        return $ranklists;
+    }
+
+    public function VodMultiRank()
+    {
+        $ranklists = [];
+        $urls = [];
+        $blockids = ["mv" => "movie", "tv" => "tv", "va" => "show", "ct" => "comic"];
+        foreach ($blockids as $key => $blockid) {
+            $urls[$key] = $this->domin . "/data/v/get_index_data.php?callback=rank&ch=" . $blockid;
+        }
+        $results = FunctionUnit::http_multi($urls);
+        foreach ($results as $key => $result) {
+            $datas = FunctionUnit::jsonp_decode($result, 1);
+            if (isset($datas["modules"])) {
+                $temp = [];
+                foreach ($datas["modules"][1]["blocks"][0]["block_item"] as $data) {
+                    $ranklist = [];
+                    $ranklist["url"] = FunctionUnit::UrlParse($data["url"] ?? "");
+                    $ranklist["title"] = $data["title"] ?? "easyvod";
+                    $ranklist["img"] = $data["img"] ?? "";
+                    $ranklist["episode"] = $data["episode"] ?? "";
+                    $ranklist["year"] = $data["year"] ?? "2021";
+                    $ranklist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                    $ranklist["pay"] = $data["pay"] ?? 0;
+                    $temp[] = $ranklist;
+                }
+                $ranklists[$key] = $temp;
+            }
+        }
+
+        return $ranklists;
+    }
+
     public function VodPlay(array $params = [])
     {
-        $url = $this->domin . FunctionUnit::UrlParse($params["url"],false).".html";
+        $url = $this->domin . FunctionUnit::UrlParse($params["url"], false) . ".html";
         $qlhtml = $this->ql->get($url);
         $inforules = [
             "range" => null,
@@ -402,11 +457,11 @@ class VtCollect implements Collect
                 $vodlist["img"] = $data["poster"] ?? "";
                 $vodlist["title"] = $data["title"] ?? "ew";
                 $vodlist["episode"] = $data["max_episode"] ?? "";
-                $vodlist["kind"] = isset($data["kinds"])?implode("/",$data["kinds"]):"";
-                $vodlist["desc"] = $data["intro"]??"";
-                $vodlist["channel"] = $data["channel"]??"未知";
+                $vodlist["kind"] = isset($data["kinds"]) ? implode("/", $data["kinds"]) : "";
+                $vodlist["desc"] = $data["intro"] ?? "";
+                $vodlist["channel"] = $data["channel"] ?? "未知";
                 $vodlist["year"] = $data["pubyear"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9).".".rand(0,9);
+                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
                 $vodlist["pay"] = $data["pay"] ?? 0;
                 $vodlists[] = $vodlist;
             }

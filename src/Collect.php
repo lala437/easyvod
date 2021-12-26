@@ -10,6 +10,10 @@ interface Collect
 
     public function VodMultiList();
 
+    public function VodRank();
+
+    public function VodMultiRank();
+
     public function VodPlay();
 
     public function VodBanner();

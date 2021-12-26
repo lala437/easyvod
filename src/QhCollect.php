@@ -312,6 +312,58 @@ class QhCollect implements Collect
         return $vodlists;
     }
 
+    public function VodRank(array $params = [])
+    {
+        $vodlists = [];
+        $catids = ["mv"=>2,"tv"=>3,"va"=>4,"ct"=>5];
+        $catid = $catids[$params["channel"]??"mv"];
+        $url = $this->domin."/rank?".http_build_query(["cat"=>$catid]);
+        $result = FunctionUnit::http_request($url, "get");
+        $datas = json_decode($result, 1);
+        if ($datas && $datas["errno"] == 0&&!empty($datas["data"])) {
+            foreach ($datas["data"] as $data) {
+                $vodlist["url"] = FunctionUnit::UrlParse($data["cat"] . "/" . $data["ent_id"]);
+                $vodlist["img"] = $data["cover"] ?? "";
+                $vodlist["title"] = $data["title"] ?? "easyvod";
+                $vodlist["episode"] = $data["upinfo"] ?? "";
+                $vodlist["year"] = $data["year"] ?? "2021";
+                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $vodlist["pay"] = $data["vip"] ?? 0;
+                $vodlists[] = $vodlist;
+            }
+        }
+        return $vodlists;
+    }
+
+    public function VodMultiRank(array $params = [])
+    {
+        $vodlists = [];
+        $urls = [];
+        $catids = ["mv"=>2,"tv"=>3,"va"=>4,"ct"=>5];
+        foreach ($catids as $key=>$catid){
+            $urls[$key] = $this->domin."/rank?".http_build_query(["cat"=>$catid]);
+        }
+        $results = FunctionUnit::http_multi($urls);
+        foreach ($results as $key=>$result){
+            $datas = json_decode($result, 1);
+            if ($datas && $datas["errno"] == 0&&!empty($datas["data"])) {
+                $temp = [];
+                foreach ($datas["data"] as $data) {
+                    $vodlist["url"] = FunctionUnit::UrlParse($data["cat"] . "/" . $data["ent_id"]);
+                    $vodlist["img"] = $data["cover"] ?? "";
+                    $vodlist["title"] = $data["title"] ?? "easyvod";
+                    $vodlist["episode"] = $data["upinfo"] ?? "";
+                    $vodlist["year"] = $data["year"] ?? "2021";
+                    $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                    $vodlist["pay"] = $data["vip"] ?? 0;
+                    $temp[] = $vodlist;
+                }
+                $vodlists[$key] = $temp;
+            }
+        }
+        return $vodlists;
+    }
+
     public function VodPlay(array $params = [])
     {
         list($cat, $id) = explode("/", FunctionUnit::UrlParse($params["url"], false));
