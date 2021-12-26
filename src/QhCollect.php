@@ -275,7 +275,7 @@ class QhCollect implements Collect
                 $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["upinfo"] ?? "";
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $vodlist["score"] = rand(5, 9) . "." . rand(0, 9);
                 $vodlist["pay"] = $data["payment"] ?? 0;
                 $vodlists[] = $vodlist;
             }
@@ -302,7 +302,7 @@ class QhCollect implements Collect
                     $vodlist["title"] = $data["title"] ?? "easyvod";
                     $vodlist["episode"] = $data["upinfo"] ?? "";
                     $vodlist["year"] = $data["year"] ?? "2021";
-                    $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                    $vodlist["score"] = rand(5, 9) . "." . rand(0, 9);
                     $vodlist["pay"] = $data["payment"] ?? 0;
                     $temp[] = $vodlist;
                 }
@@ -327,7 +327,7 @@ class QhCollect implements Collect
                 $vodlist["title"] = $data["title"] ?? "easyvod";
                 $vodlist["episode"] = $data["upinfo"] ?? "";
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $vodlist["score"] = rand(5, 9) . "." . rand(0, 9);
                 $vodlist["pay"] = $data["vip"] ?? 0;
                 $vodlists[] = $vodlist;
             }
@@ -354,7 +354,7 @@ class QhCollect implements Collect
                     $vodlist["title"] = $data["title"] ?? "easyvod";
                     $vodlist["episode"] = $data["upinfo"] ?? "";
                     $vodlist["year"] = $data["year"] ?? "2021";
-                    $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                    $vodlist["score"] = rand(5, 9) . "." . rand(0, 9);
                     $vodlist["pay"] = $data["vip"] ?? 0;
                     $temp[] = $vodlist;
                 }
@@ -450,7 +450,7 @@ class QhCollect implements Collect
                 $vodlist["channel"] = $data["cat_name"]??"未知";
                 $vodlist["desc"] = $data["description"]??"";
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $vodlist["score"] = rand(5, 9) . "." . rand(0, 9);
                 $vodlist["pay"] = $data["vip"] ?? 0;
                 $vodlists[] = $vodlist;
             }

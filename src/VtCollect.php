@@ -274,7 +274,7 @@ class VtCollect implements Collect
                 $vodlist["episode"] = $data["episode"] ?? "";
                 $vodlist["pay"] = $data["pay"] ?? 0;
                 $vodlist["year"] = $data["year"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $vodlist["score"] =  rand(5, 9) . "." . rand(0, 9);
                 $vodlists[] = $vodlist;
             }
         }
@@ -301,7 +301,7 @@ class VtCollect implements Collect
                     $vodlist["episode"] = $data["episode"] ?? "";
                     $vodlist["pay"] = $data["pay"] ?? 0;
                     $vodlist["year"] = $data["year"] ?? "2021";
-                    $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                    $vodlist["score"] =  rand(5, 9) . "." . rand(0, 9);
                     $temp[] = $vodlist;
                 }
                 $vodlists[$key] = $temp;
@@ -326,7 +326,7 @@ class VtCollect implements Collect
                 $ranklist["img"] = $data["img"] ?? "";
                 $ranklist["episode"] = $data["episode"] ?? "";
                 $ranklist["year"] = $data["year"] ?? "2021";
-                $ranklist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $ranklist["score"] =  rand(5, 9) . "." . rand(0, 9);
                 $ranklist["pay"] = $data["pay"] ?? 0;
                 $ranklists[] = $ranklist;
             }
@@ -354,7 +354,7 @@ class VtCollect implements Collect
                     $ranklist["img"] = $data["img"] ?? "";
                     $ranklist["episode"] = $data["episode"] ?? "";
                     $ranklist["year"] = $data["year"] ?? "2021";
-                    $ranklist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                    $ranklist["score"] =  rand(5, 9) . "." . rand(0, 9);
                     $ranklist["pay"] = $data["pay"] ?? 0;
                     $temp[] = $ranklist;
                 }
@@ -461,7 +461,7 @@ class VtCollect implements Collect
                 $vodlist["desc"] = $data["intro"] ?? "";
                 $vodlist["channel"] = $data["channel"] ?? "未知";
                 $vodlist["year"] = $data["pubyear"] ?? "2021";
-                $vodlist["score"] = $data["score"] ?? rand(5, 9) . "." . rand(0, 9);
+                $vodlist["score"] =  rand(5, 9) . "." . rand(0, 9);
                 $vodlist["pay"] = $data["pay"] ?? 0;
                 $vodlists[] = $vodlist;
             }
