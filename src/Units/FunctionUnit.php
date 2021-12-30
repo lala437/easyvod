@@ -143,15 +143,103 @@ class FunctionUnit
         }
     }
 
-    public static function UrlParse($url,$encode=true){
-       if (!empty($url)){
-           if ($encode){
-               $url = str_replace("/","evs",str_replace(".html","",$url));
-           }else{
-               $url = str_replace("evs","/",$url);
-           }
-           return $url;
-       }
-       return "";
+    public static function UrlParse($url, $encode = true)
+    {
+        if (!empty($url)) {
+            if ($encode) {
+                $url = str_replace("/", "evs", str_replace(".html", "", $url));
+            } else {
+                $url = str_replace("evs", "/", $url);
+            }
+            return $url;
+        }
+        return "";
+    }
+
+    public static function ContentParse($html)
+    {
+        $htmltype = self::IsXmlOrJson($html);
+        if ($htmltype == "xml") {
+            $xml = @simplexml_load_string($html, null, LIBXML_NOCDATA);
+            if (empty($xml)) {
+                $labelRule = '<pic>' . "(.*?)" . '</pic>';
+                $labelRule = '/' . str_replace('/', '\/', $labelRule) . '/is';
+                preg_match_all($labelRule, $html, $temparr);
+                $ec = false;
+                foreach ($temparr[1] as $dd) {
+                    if (strpos($dd, '[CDATA') === false) {
+                        $ec = true;
+                        $ne = '<pic>' . '<![CDATA[' . $dd . ']]>' . '</pic>';
+                        $html = str_replace('<pic>' . $dd . '</pic>', $ne, $html);
+                    }
+                }
+                if ($ec) {
+                    $xml = @simplexml_load_string($html, null, LIBXML_NOCDATA);
+                }
+                if (empty($xml)) {
+                    return ['code' => 1002, 'msg' => 'XML格式不正确'];
+                }
+            }
+            return ["type"=>"xml","data"=>$xml];
+        } elseif ($htmltype == "json") {
+            return ["type"=>"json","data"=>json_decode($html, 1)];
+        } else {
+            return ['code' => 1002, 'msg' => '无效得数据类型'];
+        }
+    }
+
+
+    public static function IsXmlOrJson($str)
+    {
+        if (self::is_xml($str)) {
+            return "xml";
+        } elseif (self::is_json($str)) {
+            return "json";
+        } else {
+            return false;
+        }
+    }
+
+    public static function is_xml($str)
+    {
+        $xml_parser = xml_parser_create();
+        if (!xml_parse($xml_parser, $str, true)) {
+            xml_parser_free($xml_parser);
+            return false;
+        }
+        return true;
+    }
+
+    public static function is_json($str)
+    {
+        $data = json_decode($str);
+        if ($data && is_object($data)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function PlayParse($playstr){
+        $vodplaylist = [];
+        $playarr = explode("$$$",$playstr);
+        foreach ($playarr as $playdata){
+          $temp = [];
+          if (mb_stripos($playdata,"m3u8")!==false){
+              $temp["type"] = "m3u8";
+          }elseif (mb_stripos($playdata,"mp4")!==false){
+              $temp["type"] = "mp4";
+          }else{
+              $temp["type"] = "zhilian";
+          }
+          $playdataarr = explode("#",$playdata);
+          $templist = [];
+          foreach ($playdataarr as $playlist){
+              $play = explode("$",$playlist);
+              $templist[] = ["episode" => $play[0]??"未知", "address" => $play[1]??""];
+          }
+          $temp["list"] = $templist;
+          $vodplaylist[] = $temp;
+        }
+        return $vodplaylist;
     }
 }

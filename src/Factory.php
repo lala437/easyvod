@@ -26,6 +26,9 @@ class Factory
                 case "weitang":
                     return new VtCollect($domin, $typeconfig);
                     break;
+                case "source":
+                    return new SourceCollect($domin,$typeconfig);
+                    break;
                 default:
                    throw new \RuntimeException("instance not is exits");
             }
