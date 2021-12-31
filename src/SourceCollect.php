@@ -116,11 +116,11 @@ class SourceCollect implements Collect
         if (isset($resultdata["type"]) && $resultdata["type"] == "xml") {
             $detail = ((array)$resultdata["data"]->list->children())["video"];
             $info = ["title" => (string)$detail->name, "img" => (string)$detail->pic, "director" => (string)$detail->director, "actor" => (string)$detail->actor, "area" => (string)$detail->area, "kind" => (string)$detail->type, "desc" => (string)$detail->des];
-            $play = FunctionUnit::PlayParse((string)$detail->dl->dd);
+            $play = FunctionUnit::PlayParse((string)$detail->dl->dd,(string)$detail->dl->dd->attributes()->flag);
         }elseif (isset($resultdata["type"]) && $resultdata["type"] == "json"){
             $detail = $resultdata["data"]["list"][0];
             $info = ["title" => $detail["vod_name"], "img" => $detail["vod_pic"], "director" => $detail["vod_director"], "actor" => $detail["vod_actor"], "area" => $detail["vod_area"], "kind" => $detail["vod_class"], "desc" => $detail["vod_content"]];
-            $play = FunctionUnit::PlayParse($detail["vod_play_url"]);
+            $play = FunctionUnit::PlayParse($detail["vod_play_url"],$detail["vod_play_from"]);
         }
         return ["info" => $info, "play" => $play];
     }

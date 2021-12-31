@@ -180,9 +180,9 @@ class FunctionUnit
                     return ['code' => 1002, 'msg' => 'XML格式不正确'];
                 }
             }
-            return ["type"=>"xml","data"=>$xml];
+            return ["type" => "xml", "data" => $xml];
         } elseif ($htmltype == "json") {
-            return ["type"=>"json","data"=>json_decode($html, 1)];
+            return ["type" => "json", "data" => json_decode($html, 1)];
         } else {
             return ['code' => 1002, 'msg' => '无效得数据类型'];
         }
@@ -219,26 +219,38 @@ class FunctionUnit
         return false;
     }
 
-    public static function PlayParse($playstr){
+    public static function PlayParse($playstr, $typestr)
+    {
+        $typearr = mb_stripos($typestr, ",") !== false ? explode(",", $typestr) : explode("$$$", $typestr);
+        $type = ["m3u8" => "m3u8", "mp4" => "mp4", "zhilian" => "zhilian"];
+        foreach ($typearr as $t) {
+            if (mb_stripos($t, "m3u8") !== false) {
+                $type["m3u8"] = $t;
+            } elseif (mb_stripos($t, "mp4") !== false) {
+                $type["mp4"] = $t;
+            } else {
+                $type["zhilian"] = $t;
+            }
+        }
         $vodplaylist = [];
-        $playarr = explode("$$$",$playstr);
-        foreach ($playarr as $playdata){
-          $temp = [];
-          if (mb_stripos($playdata,"m3u8")!==false){
-              $temp["type"] = "m3u8";
-          }elseif (mb_stripos($playdata,"mp4")!==false){
-              $temp["type"] = "mp4";
-          }else{
-              $temp["type"] = "zhilian";
-          }
-          $playdataarr = explode("#",$playdata);
-          $templist = [];
-          foreach ($playdataarr as $playlist){
-              $play = explode("$",$playlist);
-              $templist[] = ["episode" => $play[0]??"未知", "address" => $play[1]??""];
-          }
-          $temp["list"] = $templist;
-          $vodplaylist[] = $temp;
+        $playarr = explode("$$$", $playstr);
+        foreach ($playarr as $playdata) {
+            $temp = [];
+            if (mb_stripos($playdata, "m3u8") !== false) {
+                $temp["type"] = $type["m3u8"];
+            } elseif (mb_stripos($playdata, "mp4") !== false) {
+                $temp["type"] = $type["mp4"];
+            } else {
+                $temp["type"] = $type["zhilian"];
+            }
+            $playdataarr = explode("#", $playdata);
+            $templist = [];
+            foreach ($playdataarr as $playlist) {
+                $play = explode("$", $playlist);
+                $templist[] = ["episode" => $play[0] ?? "未知", "address" => $play[1]."#{$temp['type']}" ?? ""];
+            }
+            $temp["list"] = $templist;
+            $vodplaylist[] = $temp;
         }
         return $vodplaylist;
     }
