@@ -247,7 +247,7 @@ class FunctionUnit
             $templist = [];
             foreach ($playdataarr as $playlist) {
                 $play = explode("$", $playlist);
-                $templist[] = ["episode" => $play[0] ?? "未知", "address" => $play[1]."#{$temp['type']}" ?? ""];
+                $templist[] = ["episode" => $play[0] ?? "未知", "address" => $play[1]."slicetype".$temp['type']??"m3u8"];
             }
             $temp["list"] = $templist;
             $vodplaylist[] = $temp;
